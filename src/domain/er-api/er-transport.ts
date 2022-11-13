@@ -2,7 +2,7 @@ import { IERFetch } from './er-fetch';
 import { ERConvertRequest, ERConvertResult } from './er-objects';
 
 export interface IERTransport {
-
+	convert(params: ERConvertRequest): Promise<ERConvertResult>;
 }
 
 export class ERTransport implements IERTransport {
