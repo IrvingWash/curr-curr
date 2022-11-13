@@ -2,11 +2,7 @@ import { ensureDefined } from 'src/common/helpers';
 import { ERFetch, IERFetch } from './er-fetch';
 import { ERTransport, IERTransport } from './er-transport';
 
-export interface IER {
-
-}
-
-export class ER implements IER {
+export class ER {
 	private readonly _baseURL: URL;
 	private readonly _apiKey: string;
 	private readonly _erFetch: IERFetch;
