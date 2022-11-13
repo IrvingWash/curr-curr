@@ -14,7 +14,7 @@ export class ER implements IER {
 	private readonly _erTransport: IERTransport;
 
 	public constructor() {
-		this._baseURL = new URL('https://api.apilayer.com/exchangerates_data');
+		this._baseURL = new URL('https://api.apilayer.com/exchangerates_data/');
 		this._apiKey = ensureDefined(process.env.ApiKey);
 		this._erFetch = new ERFetch(this._apiKey);
 
