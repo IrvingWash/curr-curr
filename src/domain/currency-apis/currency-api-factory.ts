@@ -1,5 +1,5 @@
-import { API } from './currency-apis/common-api/api';
-import { ERAPI } from './currency-apis/er-api/er-api';
+import { API } from './common-api/api';
+import { ERAPI } from './er-api/er-api';
 
 export const enum CurrencyAPI {
 	ExchangeRates = 'Exchange Rates',
