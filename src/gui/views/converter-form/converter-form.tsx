@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import { Button } from 'src/gui/ui-kit/button/button';
 import { Input } from 'src/gui/ui-kit/input/input';
 
-export function ConverterForm(): JSX.Element {
+interface ConvertFormProps {
+	convert(): Promise<void>;
+}
+
+export function ConverterForm(props: ConvertFormProps): JSX.Element {
 	const [from, setFrom] = useState('');
 	const [to, setTo] = useState('');
 	const [amount, setAmount] = useState('');
@@ -46,5 +50,7 @@ export function ConverterForm(): JSX.Element {
 
 	async function handleConverterFormSubmit(event: React.FormEvent): Promise<void> {
 		event.preventDefault();
+
+		await props.convert();
 	}
 }

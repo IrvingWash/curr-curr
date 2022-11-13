@@ -3,10 +3,13 @@ import { ConvertCapability } from '../currency-apis/common-api/capabilities/conv
 import { ConvertationResult } from '../objects';
 
 export interface IConverterViewModel {
-
+	setFrom(value: string): void;
+	setTo(value: string): void;
+	setAmount(value: number): void;
+	convert(): Promise<void>;
 }
 
-export class ConverterViewModel {
+export class ConverterViewModel implements IConverterViewModel {
 	private readonly _convertCapability: ConvertCapability;
 
 	private _from = '';
@@ -18,24 +21,12 @@ export class ConverterViewModel {
 		this._convertCapability = convertCapability;
 	}
 
-	public getFrom(): string {
-		return this._from;
-	}
-
 	public setFrom(value: string): void {
 		this._from = value;
 	}
 
-	public getTo(): string {
-		return this._to;
-	}
-
 	public setTo(value: string): void {
 		this._to = value;
-	}
-
-	public getAmount(): number {
-		return this._amount;
 	}
 
 	public setAmount(value: number): void {
