@@ -14,7 +14,7 @@ export class App extends React.Component {
 	public override render(): JSX.Element {
 		return (
 			<main>
-				Hello World
+				Hello world
 			</main>
 		);
 	}
