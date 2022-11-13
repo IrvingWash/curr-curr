@@ -6,13 +6,13 @@ export interface IER {
 }
 
 export class ER implements IER {
-	private readonly _baseUrl: URL;
+	private readonly _baseURL: URL;
 	private readonly _apiKey: string;
 
 	private readonly _erFetch: IERFetch;
 
 	public constructor() {
-		this._baseUrl = new URL('https://api.apilayer.com');
+		this._baseURL = new URL('https://api.apilayer.com/exchangerates_data');
 		this._apiKey = ensureDefined(process.env.ApiKey);
 
 		this._erFetch = new ERFetch(this._apiKey);

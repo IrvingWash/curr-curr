@@ -1,7 +1,8 @@
 import { HTTPMethod } from 'src/common/constants';
+import { ERResponse } from './er-objects';
 
 export interface IERFetch {
-	fetch: <T>(url: URL, method?: HTTPMethod, body?: object) => Promise<T>;
+	fetch: <EREntity>(url: URL, method?: HTTPMethod, body?: object) => Promise<ERResponse<EREntity>>;
 }
 
 export class ERFetch implements IERFetch {
@@ -11,7 +12,7 @@ export class ERFetch implements IERFetch {
 		this._apiKey = apiKey;
 	}
 
-	public async fetch<T>(url: URL, method = HTTPMethod.Get, body?: object): Promise<T> {
+	public async fetch<EREntity>(url: URL, method = HTTPMethod.Get, body?: object): Promise<ERResponse<EREntity>> {
 		const response = await fetch(
 			url,
 			{
