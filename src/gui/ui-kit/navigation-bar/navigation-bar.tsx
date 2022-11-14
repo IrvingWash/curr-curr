@@ -3,14 +3,27 @@ import React from 'react';
 
 import * as s from './navigation-bar.scss';
 
+export const enum PageName {
+	Converter = 'Converter',
+	Rates = 'Rates',
+}
+
+export interface Page {
+	name: PageName;
+	active: boolean;
+}
+
 interface NavigationBarProps {
-	pages: {
-		name: string;
-		active?: boolean;
-	}[];
+	pages: Page[];
+	pageButtonClickHandler(page: PageName): void;
 }
 
 export function NavigationBar(props: NavigationBarProps): JSX.Element {
+	const {
+		pages,
+		pageButtonClickHandler,
+	} = props;
+
 	return (
 		<header className={ s.navigationBar }>
 			<nav>
@@ -22,9 +35,11 @@ export function NavigationBar(props: NavigationBarProps): JSX.Element {
 	);
 
 	function makePageButtons(): JSX.Element[] {
-		return props.pages.map((page) => (
+		return pages.map((page) => (
 			<li
 				className={ classNames(s.pageButton, page.active ? s.active : null) }
+				onClick={ (): void => pageButtonClickHandler(page.name) }
+				key={ page.name }
 			>
 					{ page.name }
 			</li>
