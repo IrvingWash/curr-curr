@@ -1,0 +1,21 @@
+.navigation-bar {
+	ul {
+		display: flex;
+		width: fit-content;
+		list-style: none;
+
+		.page-button {
+			margin-right: 10px;
+			padding: 5px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: dodgerblue;
+			}
+
+			&:active {
+				color: white;
+			}
+		}
+	}
+}
