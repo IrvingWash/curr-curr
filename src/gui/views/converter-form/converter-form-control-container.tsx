@@ -4,10 +4,6 @@ import { ConverterForm } from './converter-form';
 
 export function ConverterFormControlContainer(props: { model: IConverterViewModel }): JSX.Element {
 	return (
-		<ConverterForm convert={ convert } />
+		<ConverterForm convert={ props.model.convert } />
 	);
-
-	async function convert(): Promise<void> {
-		await props.model.convert();
-	}
 }

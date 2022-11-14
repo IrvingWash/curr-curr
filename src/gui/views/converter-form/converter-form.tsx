@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
+import { ConvertationPayload } from 'src/domain/objects';
 import { Button } from 'src/gui/ui-kit/button/button';
 import { Input } from 'src/gui/ui-kit/input/input';
 
 interface ConvertFormProps {
-	convert(): Promise<void>;
+	convert(payload: ConvertationPayload): Promise<void>;
 }
 
 export function ConverterForm(props: ConvertFormProps): JSX.Element {
@@ -51,6 +52,10 @@ export function ConverterForm(props: ConvertFormProps): JSX.Element {
 	async function handleConverterFormSubmit(event: React.FormEvent): Promise<void> {
 		event.preventDefault();
 
-		await props.convert();
+		await props.convert({
+			from,
+			to,
+			amount: +amount,
+		});
 	}
 }
