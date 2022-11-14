@@ -15,7 +15,7 @@ export interface Page {
 
 interface NavigationBarProps {
 	pages: Page[];
-	pageButtonClickHandler(page: PageName): void;
+	pageButtonClickHandler(selectedPage: PageName): void;
 }
 
 export function NavigationBar(props: NavigationBarProps): JSX.Element {
