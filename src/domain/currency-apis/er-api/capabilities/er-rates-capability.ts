@@ -1,9 +1,9 @@
 import { CurrencyRates } from 'src/domain/objects';
 import { ConvertERRates } from '../converters/er-rates-converter';
 import { IERTransport } from '../er-transport';
-import { RatesCapability } from '../../common-api/capabilities/rates-capability';
+import { IRatesCapability } from '../../common-api/capabilities/rates-capability';
 
-export class ERRatesCapability implements RatesCapability {
+export class ERRatesCapability implements IRatesCapability {
 	private _transport: IERTransport;
 
 	public constructor(transport: IERTransport) {

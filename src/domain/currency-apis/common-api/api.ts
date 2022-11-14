@@ -1,7 +1,7 @@
-import { ConvertCapability } from './capabilities/convert-capability';
-import { RatesCapability } from './capabilities/rates-capability';
+import { IConvertCapability } from './capabilities/convert-capability';
+import { IRatesCapability } from './capabilities/rates-capability';
 
-export interface API {
-	getConvertCapability(): ConvertCapability;
-	getRatesCapability(): RatesCapability;
+export interface IAPI {
+	getConvertCapability(): IConvertCapability;
+	getRatesCapability(): IRatesCapability;
 }

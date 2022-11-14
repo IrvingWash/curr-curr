@@ -1,6 +1,6 @@
 import { getErrorMessage } from 'src/common/helpers';
 import { Observable } from 'src/common/observable';
-import { ConvertCapability } from '../../currency-apis/common-api/capabilities/convert-capability';
+import { IConvertCapability } from '../../currency-apis/common-api/capabilities/convert-capability';
 import { ConvertationPayload, ConvertationResult } from '../../objects';
 
 export interface IConverterViewModel {
@@ -12,9 +12,9 @@ export interface IConverterViewModel {
 export class ConverterViewModel implements IConverterViewModel {
 	public readonly result$ = new Observable<ConvertationResult | null>(null);
 
-	private readonly _convertCapability: ConvertCapability;
+	private readonly _convertCapability: IConvertCapability;
 
-	public constructor(convertCapability: ConvertCapability) {
+	public constructor(convertCapability: IConvertCapability) {
 		this._convertCapability = convertCapability;
 	}
 

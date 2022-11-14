@@ -1,9 +1,9 @@
 import { ConvertationPayload, ConvertationResult } from 'src/domain/objects';
-import { ConvertCapability } from '../../common-api/capabilities/convert-capability';
+import { IConvertCapability } from '../../common-api/capabilities/convert-capability';
 import { convertERConvertationResult } from '../converters/er-convertation-result-converter';
 import { IERTransport } from '../er-transport';
 
-export class ERConvertCapability implements ConvertCapability {
+export class ERConvertCapability implements IConvertCapability {
 	private readonly _transport: IERTransport;
 
 	public constructor(transport: IERTransport) {

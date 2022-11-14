@@ -1,6 +1,6 @@
 import { getErrorMessage } from 'src/common/helpers';
 import { Observable } from 'src/common/observable';
-import { RatesCapability } from 'src/domain/currency-apis/common-api/capabilities/rates-capability';
+import { IRatesCapability } from 'src/domain/currency-apis/common-api/capabilities/rates-capability';
 import { CurrencyRates } from 'src/domain/objects';
 
 export interface IRatesViewModel {
@@ -21,9 +21,9 @@ export class RatesViewModel implements IRatesViewModel {
 	public readonly baseCurrency$ = new Observable<string>(CurrencyCode.RUB);
 	public readonly rates$ = new Observable<CurrencyRates | null>(null);
 
-	private readonly _ratesCapability: RatesCapability;
+	private readonly _ratesCapability: IRatesCapability;
 
-	public constructor(ratesCapability: RatesCapability) {
+	public constructor(ratesCapability: IRatesCapability) {
 		this._ratesCapability = ratesCapability;
 	}
 

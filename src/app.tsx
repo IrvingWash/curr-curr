@@ -7,7 +7,7 @@ import {
 } from './gui/ui-kit/navigation-bar/navigation-bar';
 
 import { CurrencyAPI, currencyAPIFactory } from './domain/currency-apis/currency-api-factory';
-import { API } from './domain/currency-apis/common-api/api';
+import { IAPI } from './domain/currency-apis/common-api/api';
 import { ConverterViewModel, IConverterViewModel } from './domain/models/converter/converter-view-model';
 import { ConverterControlContainer } from './gui/views/converter/converter-control-container';
 import { IRatesViewModel, RatesViewModel } from './domain/models/rates/rates-view-model';
@@ -19,7 +19,7 @@ interface AppState {
 }
 
 export class App extends React.Component<object, AppState> {
-	private readonly _api: API;
+	private readonly _api: IAPI;
 
 	private readonly _converterModel: IConverterViewModel;
 	private readonly _ratesModel: IRatesViewModel;
