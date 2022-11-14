@@ -26,3 +26,10 @@ export interface ERConvertRequest {
 	to: string;
 	amount: number;
 }
+
+export interface ERLatestRates {
+	base: string;
+	date: string;
+	rates: Record<string, number>;
+	timestamp: number;
+}

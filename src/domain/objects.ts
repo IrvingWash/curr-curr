@@ -10,3 +10,9 @@ export interface ConvertationResult extends ConvertationBase {
 }
 
 export interface ConvertationPayload extends ConvertationBase {}
+
+export interface CurrencyRates {
+	base: string;
+	date: string;
+	rates: Record<string, number>;
+}
