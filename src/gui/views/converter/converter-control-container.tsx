@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IConverterViewModel } from 'src/domain/models/converter-view-model';
+import { IConverterViewModel } from 'src/domain/models/converter/converter-view-model';
 import { useObservable } from 'src/gui/hooks/use-observable';
 import { ConverterResultDisplay } from './convertation-result-display/converter-result-display';
 import { ConverterForm } from './converter-form/converter-form';

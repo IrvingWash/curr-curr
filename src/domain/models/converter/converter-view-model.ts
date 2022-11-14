@@ -1,7 +1,7 @@
 import { getErrorMessage } from 'src/common/helpers';
 import { Observable } from 'src/common/observable';
-import { ConvertCapability } from '../currency-apis/common-api/capabilities/convert-capability';
-import { ConvertationPayload, ConvertationResult } from '../objects';
+import { ConvertCapability } from '../../currency-apis/common-api/capabilities/convert-capability';
+import { ConvertationPayload, ConvertationResult } from '../../objects';
 
 export interface IConverterViewModel {
 	result$: Observable<ConvertationResult | null>;
