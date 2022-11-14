@@ -25,7 +25,7 @@ export class ERTransport implements IERTransport {
 			throw new Error(convertResponse.error.info);
 		}
 
-		return convertResponse.result;
+		return convertResponse;
 	}
 
 	private _makeConvertURL(params: ERConvertRequest): URL {

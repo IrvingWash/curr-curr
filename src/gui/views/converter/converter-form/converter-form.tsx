@@ -57,5 +57,13 @@ export function ConverterForm(props: ConvertFormProps): JSX.Element {
 			to,
 			amount: +amount,
 		});
+
+		clearInputs();
+	}
+
+	function clearInputs(): void {
+		setFrom('');
+		setTo('');
+		setAmount('');
 	}
 }

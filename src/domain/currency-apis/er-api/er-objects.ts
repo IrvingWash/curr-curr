@@ -1,7 +1,4 @@
-export interface ERSuccessResponse<EREntity> {
-	success: true;
-	result: EREntity;
-}
+export type ERSuccessResponse<EREntity> = { success: true } & EREntity;
 
 export interface ERErrorResponse {
 	success: false;

@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { CurrencyAPI, currencyAPIFactory } from './domain/currency-apis/currency-api-factory';
 import { API } from './domain/currency-apis/common-api/api';
-import { ConverterFormControlContainer } from './gui/views/converter-form/converter-form-control-container';
 import { ConverterViewModel, IConverterViewModel } from './domain/models/converter-view-model';
+import { ConverterControlContainer } from './gui/views/converter/converter-control-container';
 
 export class App extends React.Component {
 	private readonly _api: API;
@@ -20,7 +21,7 @@ export class App extends React.Component {
 	public override render(): JSX.Element {
 		return (
 			<main>
-				<ConverterFormControlContainer model={ this._converterModel } />
+				<ConverterControlContainer model={ this._converterModel } />
 			</main>
 		);
 	}
