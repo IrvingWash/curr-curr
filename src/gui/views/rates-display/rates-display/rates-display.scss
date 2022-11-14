@@ -1,0 +1,23 @@
+.rates-display {
+	margin-top: 100px;
+
+	h2 {
+		text-align: center;
+	}
+
+	.base-currency-select {
+		display: block;
+		margin: 10px auto;
+	}
+
+	.rate-loader {
+		width: fit-content;
+		margin: 0 auto;
+	}
+
+	.rates {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0 100px;
+	}
+}

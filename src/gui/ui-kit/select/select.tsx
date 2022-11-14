@@ -3,13 +3,18 @@ import React from 'react';
 interface SelectProps {
 	options: string[];
 	changeHandler(event: React.ChangeEvent<HTMLSelectElement>): void;
+	className?: string;
 }
 
 export function Select(props: SelectProps): JSX.Element {
-	const { options, changeHandler } = props;
+	const {
+		options,
+		changeHandler,
+		className,
+	} = props;
 
 	return (
-		<select onChange={ changeHandler }>
+		<select className={ className } onChange={ changeHandler }>
 			{ renderOptions() }
 		</select>
 	);

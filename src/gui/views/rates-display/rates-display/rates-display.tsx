@@ -4,6 +4,9 @@ import { CurrencyCode } from 'src/domain/models/rates/rates-view-model';
 import { CurrencyRates } from 'src/domain/objects';
 import { Loader } from 'src/gui/ui-kit/loader/loader';
 import { Select } from 'src/gui/ui-kit/select/select';
+import { CurrencyCard } from '../currency-card/currency-card';
+
+import * as s from './rates-display.scss';
 
 interface RatesDisplayProps {
 	baseCurrency: string;
@@ -27,12 +30,19 @@ export function RatesDisplay(props: RatesDisplayProps): JSX.Element {
 	}, [baseCurrency]);
 
 	return (
-		<div>
-			<h2>{ baseCurrency }</h2>
+		<div className={ s.ratesDisplay }>
+			<h2>Currency Rates</h2>
 
-			 <Select options={ Object.values(CurrencyCode) } changeHandler={ handleCurrencySelectChange } />
+			 <Select
+			 	className={ s.baseCurrencySelect}
+				options={ Object.values(CurrencyCode) }
+				changeHandler={ handleCurrencySelectChange }
+			/>
 
-			 { isLoading ? <Loader /> : renderRates() }
+			{ isLoading
+				? <Loader className={ s.rateLoader } />
+				: <div className={ s.rates }>{ renderRates() }</div>
+			}
 		</div>
 	);
 
@@ -45,10 +55,11 @@ export function RatesDisplay(props: RatesDisplayProps): JSX.Element {
 
 		for (const currency in rates.rates) {
 			rateCards.push(
-				<div key={ currency }>
-					<p>Currency: { currency }</p>
-					<p>Rate: { rates.rates[currency]}</p>
-				</div>
+				<CurrencyCard
+					currency={ currency }
+					rate={ rates.rates[currency] }
+					key={ currency }
+				/>
 			);
 		}
 
