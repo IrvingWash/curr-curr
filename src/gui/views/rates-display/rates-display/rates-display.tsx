@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { CurrencyCode } from 'src/domain/models/rates/rates-view-model';
 import { CurrencyRates } from 'src/domain/objects';
+import { Loader } from 'src/gui/ui-kit/loader/loader';
+import { Select } from 'src/gui/ui-kit/select/select';
 
 interface RatesDisplayProps {
-	baseCurrency: string | null;
+	baseCurrency: string;
 	rates: CurrencyRates | null;
 	getRates(): Promise<void>;
 	baseCurrencySelectionHandler(baseCurrency: string): void;
@@ -17,22 +20,19 @@ export function RatesDisplay(props: RatesDisplayProps): JSX.Element {
 		baseCurrencySelectionHandler,
 	} = props;
 
+	const [isLoading, setIsLoading] = useState(false);
+
 	useEffect(() => {
-		if (baseCurrency !== null) {
-			getRates();
-		}
+		fetchRates();
 	}, [baseCurrency]);
 
 	return (
 		<div>
-			<h2>
-				{ baseCurrency !== null
-					? baseCurrency
-					: 'Select base currency'
-				}
-			 </h2>
+			<h2>{ baseCurrency }</h2>
 
-			 { renderRates() }
+			 <Select options={ Object.values(CurrencyCode) } changeHandler={ handleCurrencySelectChange } />
+
+			 { isLoading ? <Loader /> : renderRates() }
 		</div>
 	);
 
@@ -53,5 +53,19 @@ export function RatesDisplay(props: RatesDisplayProps): JSX.Element {
 		}
 
 		return rateCards;
+	}
+
+	function handleCurrencySelectChange(event: React.ChangeEvent<HTMLSelectElement>): void {
+		baseCurrencySelectionHandler(event.target.value);
+	}
+
+	async function fetchRates(): Promise<void> {
+		setIsLoading(true);
+
+		try {
+			await getRates();
+		} finally {
+			setIsLoading(false);
+		}
 	}
 }

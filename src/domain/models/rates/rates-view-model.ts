@@ -4,15 +4,21 @@ import { RatesCapability } from 'src/domain/currency-apis/common-api/capabilitie
 import { CurrencyRates } from 'src/domain/objects';
 
 export interface IRatesViewModel {
-	baseCurrency$: Observable<string | null>;
+	baseCurrency$: Observable<string>;
 	rates$: Observable<CurrencyRates | null>;
-	getBaseCurrency: () => string | null;
+	getBaseCurrency: () => string;
 	setBaseCurrency(baseCurrency: string): void;
 	getRates: () => Promise<void>;
 }
 
+export enum CurrencyCode {
+	RUB = 'RUB',
+	USD = 'USD',
+	JPY = 'JPY',
+}
+
 export class RatesViewModel implements IRatesViewModel {
-	public readonly baseCurrency$ = new Observable<string | null>(null);
+	public readonly baseCurrency$ = new Observable<string>(CurrencyCode.RUB);
 	public readonly rates$ = new Observable<CurrencyRates | null>(null);
 
 	private readonly _ratesCapability: RatesCapability;
@@ -21,7 +27,7 @@ export class RatesViewModel implements IRatesViewModel {
 		this._ratesCapability = ratesCapability;
 	}
 
-	public getBaseCurrency(): string | null {
+	public getBaseCurrency(): string {
 		return this.baseCurrency$.getValue();
 	}
 
@@ -30,14 +36,8 @@ export class RatesViewModel implements IRatesViewModel {
 	}
 
 	public getRates = async (): Promise<void> => {
-		const baseCurrency = this.getBaseCurrency();
-
-		if (baseCurrency === null) {
-			throw new Error('Base currency is not selected');
-		}
-
 		try {
-			const rates = await this._ratesCapability.getRates(baseCurrency);
+			const rates = await this._ratesCapability.getRates(this.getBaseCurrency());
 
 			this.rates$.updateValue(rates);
 		} catch (error) {
