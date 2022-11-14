@@ -20,6 +20,7 @@ export function ConverterForm(props: ConvertFormProps): JSX.Element {
 
 	return (
 		<form onSubmit={ handleConverterFormSubmit } className={ s.converterForm }>
+			<h2>Currency converter</h2>
 			<Input
 				className={ s.formControl }
 				value={ from }

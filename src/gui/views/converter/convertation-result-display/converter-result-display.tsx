@@ -13,7 +13,7 @@ export function ConverterResultDisplay(props: ConvertationResultDisplayProps): J
 
 	return (
 		<div className={ s.converterResultDisplay }>
-			<h1>Result:</h1>
+			<h2>Result:</h2>
 			<p>From: { convertationResult.from } x{ convertationResult.amount }</p>
 			<p>To: { convertationResult.to }</p>
 			<p>Result: { convertationResult.result }</p>
