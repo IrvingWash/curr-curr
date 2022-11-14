@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Observable } from 'rxjs';
 
-export function useObservable<T>(observable$: Observable<T>, initialValue: T): T;
-export function useObservable<T>(observable$: Observable<T>, initialValue?: never): T | undefined;
-export function useObservable<T>(observable$: Observable<T>, initialValue?: T): T | undefined {
+import { Observable } from 'src/common/observable';
+
+export function useObservable<T>(observable$: Observable<T>, initialValue: T): T {
 	const [value, setValue] = useState(initialValue);
 
 	useEffect(
 		() => {
-			const subscription = observable$.subscribe(setValue);
-			return () => subscription.unsubscribe();
+			observable$.subscribe(setValue);
+			return () => observable$.unsubscribe();
 		},
 		[observable$]
 	);
