@@ -2,7 +2,7 @@ import React from 'react';
 
 import { IConverterViewModel } from 'src/domain/models/converter-view-model';
 import { useObservable } from 'src/gui/hooks/use-observable';
-import { ConvertationResultDisplay } from './convertation-result-display/convertation-result-display';
+import { ConverterResultDisplay } from './convertation-result-display/converter-result-display';
 import { ConverterForm } from './converter-form/converter-form';
 
 interface ConverterControlContainerProps {
@@ -18,7 +18,7 @@ export function ConverterControlContainer(props: ConverterControlContainerProps)
 		<>
 			<ConverterForm convert={ model.convert } />
 			{ convertationResult !== null &&
-				<ConvertationResultDisplay convertationResult={ convertationResult } />
+				<ConverterResultDisplay convertationResult={ convertationResult } />
 			}
 		</>
 	);

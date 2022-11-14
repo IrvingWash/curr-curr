@@ -5,6 +5,8 @@ import { Button } from 'src/gui/ui-kit/button/button';
 import { Input } from 'src/gui/ui-kit/input/input';
 import { Loader } from 'src/gui/ui-kit/loader/loader';
 
+import * as s from './converter-form.scss';
+
 interface ConvertFormProps {
 	convert(payload: ConvertationPayload): Promise<void>;
 }
@@ -17,8 +19,9 @@ export function ConverterForm(props: ConvertFormProps): JSX.Element {
 	const [isLoading, setIsLoading] = useState(false);
 
 	return (
-		<form onSubmit={ handleConverterFormSubmit }>
+		<form onSubmit={ handleConverterFormSubmit } className={ s.converterForm }>
 			<Input
+				className={ s.formControl }
 				value={ from }
 				onChange={ handleFromInputChange }
 				placeholder='Convert from'
@@ -26,6 +29,7 @@ export function ConverterForm(props: ConvertFormProps): JSX.Element {
 			/>
 
 			<Input
+				className={ s.formControl }
 				value={ to }
 				onChange={ handleToInputChange }
 				placeholder='Convert to'
@@ -33,6 +37,7 @@ export function ConverterForm(props: ConvertFormProps): JSX.Element {
 			/>
 
 			<Input
+				className={ s.formControl }
 				value={ amount }
 				onChange={ handleAmountInputChange }
 				placeholder='Amount to convert'
@@ -40,12 +45,13 @@ export function ConverterForm(props: ConvertFormProps): JSX.Element {
 			/>
 
 			<Button
+				className={ s.formControl }
 				text='Convert'
 				disabled={ isLoading }
 				type='submit'
 			/>
 
-			{ isLoading && <Loader />}
+			{ isLoading && <Loader className={ s.formLoader } />}
 		</form>
 	);
 

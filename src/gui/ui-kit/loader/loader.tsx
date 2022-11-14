@@ -1,5 +1,9 @@
 import React from 'react';
 
-export function Loader(): JSX.Element {
-	return <p>Loading...</p>;
+interface LoaderProps {
+	className?: string;
+}
+
+export function Loader(props: LoaderProps): JSX.Element {
+	return <p className={ props.className }>Loading...</p>;
 }

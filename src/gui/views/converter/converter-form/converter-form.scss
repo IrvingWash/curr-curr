@@ -1,0 +1,16 @@
+.converter-form {
+	display: flex;
+	flex-direction: column;
+
+	width: 300px;
+
+	margin: 200px auto 0;
+
+	.form-control {
+		margin-bottom: 10px;
+	}
+
+	.form-loader {
+		margin: 0 auto;
+	}
+}
