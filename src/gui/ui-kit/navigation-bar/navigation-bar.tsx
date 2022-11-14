@@ -1,9 +1,13 @@
+import classNames from 'classnames';
 import React from 'react';
 
 import * as s from './navigation-bar.scss';
 
 interface NavigationBarProps {
-	pages: string[];
+	pages: {
+		name: string;
+		active?: boolean;
+	}[];
 }
 
 export function NavigationBar(props: NavigationBarProps): JSX.Element {
@@ -19,7 +23,11 @@ export function NavigationBar(props: NavigationBarProps): JSX.Element {
 
 	function makePageButtons(): JSX.Element[] {
 		return props.pages.map((page) => (
-			<li className={ s.pageButton }>{ page }</li>
+			<li
+				className={ classNames(s.pageButton, page.active ? s.active : null) }
+			>
+					{ page.name }
+			</li>
 		));
 	}
 }

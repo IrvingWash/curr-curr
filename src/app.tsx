@@ -22,7 +22,7 @@ export class App extends React.Component {
 	public override render(): JSX.Element {
 		return (
 			<>
-				<NavigationBar pages={ ['Converter', 'Rates'] } />
+				<NavigationBar pages={ [{ name: 'Converter', active: true }, { name: 'Rates' }] } />
 				<main>
 					<ConverterControlContainer model={ this._converterModel } />
 				</main>
