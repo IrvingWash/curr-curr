@@ -11,6 +11,7 @@ export function convertERConvertationResult(convertationResult: ERConvertResult)
 	return {
 		from: query.from,
 		to: query.to,
+		amount: query.amount,
 		rate: info.rate,
 		result: result,
 	};

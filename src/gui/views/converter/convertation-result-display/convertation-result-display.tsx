@@ -11,7 +11,7 @@ export function ConvertationResultDisplay(props: ConvertationResultDisplayProps)
 
 	return (
 		<div>
-			<p>From: { convertationResult.from }</p>
+			<p>From: { convertationResult.from } x{ convertationResult.amount }</p>
 			<p>To: { convertationResult.to }</p>
 			<p>Result: { convertationResult.result }</p>
 			<p>Rate: { convertationResult.rate }</p>
