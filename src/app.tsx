@@ -10,6 +10,8 @@ import { CurrencyAPI, currencyAPIFactory } from './domain/currency-apis/currency
 import { API } from './domain/currency-apis/common-api/api';
 import { ConverterViewModel, IConverterViewModel } from './domain/models/converter/converter-view-model';
 import { ConverterControlContainer } from './gui/views/converter/converter-control-container';
+import { IRatesViewModel, RatesViewModel } from './domain/models/rates/rates-view-model';
+import { RatesDisplayControlContainer } from './gui/views/rates-display/rates-display-control-controller';
 
 interface AppState {
 	currentPage: PageName;
@@ -20,6 +22,7 @@ export class App extends React.Component<object, AppState> {
 	private readonly _api: API;
 
 	private readonly _converterModel: IConverterViewModel;
+	private readonly _ratesModel: IRatesViewModel;
 
 	public constructor(props: object) {
 		super(props);
@@ -27,6 +30,7 @@ export class App extends React.Component<object, AppState> {
 		this._api = currencyAPIFactory(CurrencyAPI.ExchangeRates);
 
 		this._converterModel = new ConverterViewModel(this._api.getConvertCapability());
+		this._ratesModel = new RatesViewModel(this._api.getRatesCapability());
 
 		this.state = {
 			currentPage: PageName.Converter,
@@ -56,7 +60,7 @@ export class App extends React.Component<object, AppState> {
 			case PageName.Converter:
 				return <ConverterControlContainer model={ this._converterModel } />;
 			case PageName.Rates:
-				return <div>Hello world</div>;
+				return <RatesDisplayControlContainer model={ this._ratesModel } />;
 		}
 	}
 
