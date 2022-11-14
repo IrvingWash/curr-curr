@@ -8,6 +8,7 @@ interface ButtonProps {
 	onClick?(): void;
 	className?: string;
 	type?: 'submit';
+	disabled?: boolean;
 }
 
 export function Button(props: ButtonProps): JSX.Element {
@@ -16,6 +17,7 @@ export function Button(props: ButtonProps): JSX.Element {
 		onClick,
 		className,
 		type,
+		disabled,
 	} = props;
 
 	return (
@@ -23,6 +25,7 @@ export function Button(props: ButtonProps): JSX.Element {
 			className={ classNames(s.button, className) }
 			type={ type }
 			onClick={ onClick }
+			disabled={ disabled }
 		>
 			{ text }
 		</button>

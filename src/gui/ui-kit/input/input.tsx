@@ -8,6 +8,7 @@ interface InputProps {
 	onChange(event: React.ChangeEvent<HTMLInputElement>): void;
 	className?: string;
 	placeholder?: string;
+	disabled?: boolean;
 }
 
 export function Input(props: InputProps): JSX.Element {
@@ -16,6 +17,7 @@ export function Input(props: InputProps): JSX.Element {
 		onChange,
 		className,
 		placeholder,
+		disabled,
 	} = props;
 
 	return (
@@ -25,6 +27,7 @@ export function Input(props: InputProps): JSX.Element {
 			onChange={ onChange }
 			placeholder={ placeholder }
 			type='text'
+			disabled={ disabled }
 		/>
 	);
 }
