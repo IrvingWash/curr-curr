@@ -17,7 +17,7 @@ interface RatesDisplayProps {
 
 export function RatesDisplay(props: RatesDisplayProps): JSX.Element {
 	const {
-		baseCurrency = 'RUB',
+		baseCurrency,
 		rates,
 		getRates,
 		baseCurrencySelectionHandler,
